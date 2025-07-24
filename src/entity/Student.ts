@@ -1,10 +1,13 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Course } from "./Course";
-import { Subject } from "typeorm/persistence/Subject";
 
 @Entity()
 export class Student{
+
     @PrimaryColumn()
+    studentId!: string;
+
+    @PrimaryGeneratedColumn('increment')
     rollNo!: string
 
     @ManyToOne(()=>Course, (course)=>course.students)

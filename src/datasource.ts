@@ -1,6 +1,9 @@
 import { DataSource } from "typeorm";
+import { Subject } from "typeorm/persistence/Subject";
+import { Course } from "./entity/Course";
+import { Student } from "./entity/Student";
 
-const datasource = new DataSource({
+const AppDatasource = new DataSource({
     type: "postgres",
     host: "localhost",
     port: 5432,
@@ -8,5 +11,8 @@ const datasource = new DataSource({
     password: "mypassword",
     database: "mydb",
     synchronize: true,
-    logging: false
-})
+    logging: false,
+    entities: [Subject, Course, Student]
+});
+
+export default AppDatasource;

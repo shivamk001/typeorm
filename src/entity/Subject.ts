@@ -4,13 +4,15 @@ import { Course } from "./Course";
 @Entity()
 export class Subject{
     @PrimaryColumn()
-    courseId!: string;
+    subjectId!: string;
 
     @Column()
     name!: string;
 
     @ManyToOne(()=>Course, (course)=>course.subjects)
     course!: Course; 
+
+    
 
 }
 
