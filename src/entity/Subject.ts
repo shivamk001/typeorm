@@ -1,5 +1,6 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { Course } from "./Course";
+import { Student } from "./Student";
 
 @Entity()
 export class Subject{
@@ -9,11 +10,12 @@ export class Subject{
     @Column()
     name!: string;
 
-    @ManyToOne(()=>Course, (course)=>course.subjects)
-    course!: Course; 
+    @ManyToMany(()=>Course, (course)=>course.subjects)
+    courses!: Course[]
 
-    
-
+    // @ManyToMany(()=>Student)
+    // @JoinTable()
+    // students!: Student[]
 }
 
 // User Photos

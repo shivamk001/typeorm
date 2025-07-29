@@ -1,5 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
-import { Student } from "./Student";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { Subject } from "./Subject";
 
 @Entity()
@@ -10,14 +9,12 @@ export class Course{
     @Column()
     name!: string;
 
-    @OneToMany(()=>Student, (student)=>student.course)
-    students!: Course[];
-
-    @OneToMany(()=>Subject, (subject)=>subject.course)
-    subjects!: Subject[];
-
     @Column()
     duration!: number;
+
+    @ManyToMany(()=>Subject, (subject)=>subject.courses)
+    @JoinTable()
+    subjects!: Subject[]
 }
 
 // User Photos

@@ -43,15 +43,15 @@ app.post('/students', async (req: Request, res: Response)=>{
     // get the course first 
     let course=await CourseRepository.findOneBy({courseId});
 
-    if(course){
-        await StudentRepository
-            .createQueryBuilder()
-            .insert()
-            .values([
-                { studentId, firstName, lastName, year, course}
-            ])
-            .execute();
-    }
+    // if(course){
+    //     await StudentRepository
+    //         .createQueryBuilder()
+    //         .insert()
+    //         .values([
+    //             { studentId, firstName, lastName, year, course}
+    //         ])
+    //         .execute();
+    // }
 
 });
 

@@ -1,0 +1,55 @@
+Installation:
+	sudo apt update
+
+	sudo apt install postgresql postgresql-contrib
+		postgresql: the core database system
+		postgresql-contrib: useful extensions (like uuid-ossp, pg_stat_statements, etc.)
+
+	Check PostgreSQL Status
+		sudo systemctl status PostgreSQL
+
+	Switch to the postgres User
+		sudo -i -u postgres
+		
+		Then enter PostgreSQL shell:
+			psql
+
+
+	Enable Remote Connections
+		sudo nano /etc/postgresql/*/main/pg_hba.conf
+		Change peer to md5 for local connections if needed.
+
+		sudo nano /etc/postgresql/*/main/postgresql.conf
+		Set: listen_addresses = '*' or 'localhost'
+
+
+		Restart PostgreSQL
+		sudo systemctl restart postgresql
+
+
+
+
+
+ACCESSING POSTGRES SHELL
+	sudo -i -u postgres
+	psql
+
+	
+	psql -U username -d dbname
+
+COMMANDS:
+	LIST ALL DBS:
+	\l
+	OR
+	\list
+
+	USE THE DB
+	\c mydb
+	OR
+	\connect mydb
+
+	EXIT psql SHELL
+	\q
+
+	LIST TABLES
+	\dt

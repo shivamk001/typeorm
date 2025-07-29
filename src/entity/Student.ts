@@ -1,4 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, JoinColumn, ManyToMany } from "typeorm";
 import { Course } from "./Course";
 
 @Entity()
@@ -10,9 +10,6 @@ export class Student{
     @PrimaryGeneratedColumn('increment')
     rollNo!: string
 
-    @ManyToOne(()=>Course, (course)=>course.students)
-    course!: Course
-
     @Column()
     firstName!: string
 
@@ -22,12 +19,10 @@ export class Student{
     @Column()
     year!: number
 
-    // @ManyToMany()
-
-
+    // student will have foreign key of course 
+    // @ManyToOne(()=>Course)
+    // course!: Course
 }
 
-// User Photo
-// 1 user many photos
-// Course Student
 // 1 course many students
+// many students 1 course

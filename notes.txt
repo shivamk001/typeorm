@@ -1,0 +1,31 @@
+course to student relation
+    one to many
+    student will have the foreign key to course
+
+    in Student add
+        @ManyToOne(()=>Course)
+        @JoinColumn() //to add courseId to student table
+        course: Course
+
+    In Course no need to add
+        @OneToMany(()=>Student, (student)=>student.course)
+        students!: Course[];
+
+    if adding ManyToOne no need to add OneToMany
+    if adding OneToMany adding ManyToOne required
+
+course to subject relation
+    many to many
+    some subjects are common to many courses
+
+    added to Course table
+        because its the owning side of the relation
+            @ManyToMany(()=>Subject)
+            @JoinColumn()
+            subjects!: Subject[]
+
+
+student to subject relation
+    many to many
+    one student many subjects
+    one subject many students
